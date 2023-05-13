@@ -3,8 +3,7 @@ const QueryDatabase = require('../../databases/queryDatabase');
 class UsersQuery {
   async execute(userId) {
     try {
-      let database = new QueryDatabase();
-      const db = await database.connect();
+      const db = await new QueryDatabase().connect();
       const collection = db.collection('users');
       const user = await collection.findOne({ _id: userId });
       console.log('User found:', user);

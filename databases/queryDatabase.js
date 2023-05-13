@@ -1,4 +1,3 @@
-require('dotenv').config();
 const { MongoClient } = require('mongodb');
 
 const url = `mongodb://${process.env.QUERY_DB_HOST}:${process.env.QUERY_DB_PORT}`;

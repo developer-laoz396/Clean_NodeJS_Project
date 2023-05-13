@@ -3,8 +3,7 @@ const TransactionDatabase = require("../../databases/transactionDatabase");
 class UsersCommand {
   async create(userData) {
     try {
-      let database = new TransactionDatabase();
-      const db = await new database.connect();
+      const db = await new TransactionDatabase.connect();
       const collection = db.collection("users");
       const result = await collection.insertOne(userData);
       console.log("User created:", result.insertedId);
@@ -14,7 +13,7 @@ class UsersCommand {
   }
   async update(id, userData) {
     try {
-      const db = await database.connect();
+      const db = await TransactionDatabase.connect();
       const collection = db.collection("users");
       const result = await collection.updateOne(
         { _id: id },
