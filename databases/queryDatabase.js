@@ -1,10 +1,11 @@
+require('dotenv').config();
 const { MongoClient } = require('mongodb');
 
 const url = `mongodb://${process.env.QUERY_DB_HOST}:${process.env.QUERY_DB_PORT}`;
 const dbName = process.env.QUERY_DB_NAME;
 
 class QueryDatabase {
-  async connect(url, dbName) {
+  async connect() {
     try {
       const client = new MongoClient(url);
       await client.connect();
