@@ -1,0 +1,29 @@
+{
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "mongodb": "^5.5.0"
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "name": "clean_nodejs_project",
+  "description": "Proyecto muy basico de ejemplo equivalente en Node.js para la estructura del proyecto con dos bases de datos, modelos y una clase para la lógica de negocio",
+  "version": "1.0.0",
+  "main": "server.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/developer-laoz396/Clean_NodeJS_Project.git"
+  },
+  "keywords": [
+    "clean",
+    "nodejs",
+    "template"
+  ],
+  "author": "Luis Andrés Olarte Zabala",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/developer-laoz396/Clean_NodeJS_Project/issues"
+  },
+  "homepage": "https://github.com/developer-laoz396/Clean_NodeJS_Project#readme"
+}
