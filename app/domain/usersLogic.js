@@ -1,22 +1,19 @@
-const User = require('../models/user');
+const User = require("../models/user");
 
-const UserCommand = require('../commands/usersCommand');
-const UserQuery = require('../queries/usersQuery');
-
-const userCommand = new UserCommand();
-const userQuery = new UserQuery();
+const UsersCommand = require("../commands/usersCommand");
+const UsersQuery = require("../queries/usersQuery");
 
 class UsersLogic {
   createUser(userData) {
     // Lógica para crear un usuario
-    const user = new User(userData.id, userData.name, userData.email);
-    userCommand.create(user);
+    const user = new User(userData);
+    new UsersCommand().create(user);
   }
 
   getUser(userId) {
     // Lógica para obtener un usuario
-    const userData = userQuery.get(userId);
-    const user = new User(userData.id, userData.name, userData.email);
+    const userData = new UsersQuery().execute(userId);
+    const user = new User(userData);
     return user;
   }
 }

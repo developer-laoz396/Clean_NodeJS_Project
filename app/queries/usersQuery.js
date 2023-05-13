@@ -1,8 +1,9 @@
-const database = require('../../databases/queryDatabase');
+const QueryDatabase = require('../../databases/queryDatabase');
 
-class UserQuery {
+class UsersQuery {
   async execute(userId) {
     try {
+      let database = new QueryDatabase();
       const db = await database.connect();
       const collection = db.collection('users');
       const user = await collection.findOne({ _id: userId });
@@ -15,4 +16,4 @@ class UserQuery {
   }
 }
 
-module.exports = UserQuery;
+module.exports = UsersQuery;

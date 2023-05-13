@@ -1,14 +1,28 @@
-const database = require('../../databases/transactionDatabase');
+const TransactionDatabase = require("../../databases/transactionDatabase");
 
 class UsersCommand {
   async create(userData) {
     try {
-      const db = await database.connect();
-      const collection = db.collection('users');
+      let database = new TransactionDatabase();
+      const db = await new database.connect();
+      const collection = db.collection("users");
       const result = await collection.insertOne(userData);
-      console.log('User created:', result.insertedId);
+      console.log("User created:", result.insertedId);
     } catch (error) {
-      console.error('Error creating user:', error);
+      console.error("Error creating user:", error);
+    }
+  }
+  async update(id, userData) {
+    try {
+      const db = await database.connect();
+      const collection = db.collection("users");
+      const result = await collection.updateOne(
+        { _id: id },
+        { $set: userData }
+      );
+      console.log("User updated:", result.modifiedCount);
+    } catch (error) {
+      console.error("Error updating user:", error);
     }
   }
 }
