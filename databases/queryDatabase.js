@@ -1,6 +1,7 @@
+require('dotenv').config();
 const { MongoClient } = require('mongodb');
 
-const url = process.env.TRANSACTION_DB_CONN;
+const url = process.env.QUERY_DB_CONN;
 const dbName = process.env.QUERY_DB_NAME;
 
 class QueryDatabase {

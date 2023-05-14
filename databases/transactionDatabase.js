@@ -1,8 +1,8 @@
 require('dotenv').config();
 const { MongoClient } = require('mongodb');
 
-const url = process.env.TRANSACTION_DB_CONN;
-const dbName = process.env.TRANSACTION_DB_NAME;
+const url = process.env.TRANS_DB_CONN;
+const dbName = process.env.TRANS_DB_NAME;
 
 class TransactionDatabase {
   async connect() {

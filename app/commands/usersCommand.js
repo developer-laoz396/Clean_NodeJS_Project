@@ -6,23 +6,36 @@ class UsersCommand {
     try {
       const db = await new TransactionDatabase().connect();
       const collection = db.collection("users");
+
       const result = await collection.insertOne(userData);
-      return result.insertedId;
+      return result;
     } catch (error) {
-      console.error("Error creating user:", error);
+      console.error("Error updating user:", error);
+      return { success: true, code: 500, error: 'Error getting user:', error };
     }
   }
   async update(id, userData) {
     try {
-      const db = await TransactionDatabase().connect();
+      const db = await new TransactionDatabase().connect();
       const collection = db.collection("users");
-      const result = await collection.updateOne(
-        { _id: new ObjectId(userId) },
-        { $set: userData }
-      );
-      return result.modifiedCount;
+
+      const result = await collection.replaceOne({ _id: new ObjectId(id) }, userData);
+      return result;
     } catch (error) {
       console.error("Error updating user:", error);
+      return { success: true, code: 500, error: 'Error getting user:', error };
+    }
+  }
+  async delete(id) {
+    try {
+      const db = await new TransactionDatabase().connect();
+      const collection = db.collection("users");
+
+      const result = await collection.deleteOne({ _id: new ObjectId(id) });
+      return result;
+    } catch (error) {
+      console.error("Error updating user:", error);
+      return { success: true, code: 500, error: 'Error getting user:', error };
     }
   }
 }
