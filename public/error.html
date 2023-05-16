@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Error</title>
+  <link rel="stylesheet" href="../html/styles.css">
+</head>
+<body>
+  <div class="error-container">
+    <h1>Error</h1>
+    <p><strong>Detalles del error:</strong></p>
+    <p id="error-detail"></p>
+  </div>
+
+  <script>
+    // Obtener el detalle del error de la cadena de consulta
+    const urlParams = new URLSearchParams(window.location.search);
+    const errorDetail = urlParams.get('error');
+
+    // Insertar el detalle del error en el elemento del DOM
+    const errorDetailElement = document.getElementById('error-detail');
+    errorDetailElement.textContent = errorDetail;
+  </script>
+</body>
+</html>
